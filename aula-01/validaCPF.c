@@ -1,6 +1,9 @@
 #include <stdio.h>
 
 
+#define NUM_PESSOAS 3
+
+
 typedef struct Pessoa Pessoa;
 
 
@@ -11,72 +14,91 @@ struct Pessoa {
 };
 
 
-
-int validaCPF(unsigned long int cpf){
+int validarCPF(unsigned long int cpf){
+    unsigned long int cpfAux = cpf;
     
-    unsigned long int cpfAux;
+    int segundoD, primeiroD, soma, resto;
+
+
+    // validacao do primeiro digito ============================================
+    segundoD = cpfAux % 10;
+    cpfAux /= 10;
     
-    // validacao do primeiro digito
-
-    int segundoD = cpfAux % 10;
-    cpfAux /= 10;
-    int primeiroD = cpfAux % 10;
+    primeiroD = cpfAux % 10;
     cpfAux /= 10;
 
-    int soma = 0;
-    for (int i = 10; i > 0; i++){
-        soma += (cpfAux % 10) * i;
+    soma = 0;
+    for (int i = 2; i <= 10; i++){
+        soma += ( cpfAux % 10 ) * i;
         cpfAux /= 10;
     }
 
-    int resto = (soma * 10) % 11;
+    resto = soma % 11;
+
+    if ( resto < 2 ){
+        if ( primeiroD != 0 ) 
+            return 0;
+    }
+    else {
+        if ( primeiroD != 11 - resto )
+            return 0;
+    }
 
 
-    if (resto != primeiroD) return 0;
-
-    // validacao do segundo digito
-
+    // validacao do segundo digito =============================================
     cpfAux = cpf / 10;
 
     soma = 0;
-    for (int i = 11; i > 1; i++){
+    for (int i = 2; i <= 11; i++){
         soma += (cpfAux % 10) * i;
         cpfAux /= 10;
     }
 
-    resto = (soma * 10) % 11;
+    resto = soma % 11;
 
-    
-    return (resto == segundoD) ? 1 : 0;
+    if ( resto < 2 ){
+        if ( segundoD != 0 ) 
+            return 0;
+    }
+    else {
+        if ( segundoD != 11 - resto )
+            return 0;
+    }
+
+    return 1;
 }
 
 
 int main(){
+    Pessoa pessoa[NUM_PESSOAS];
 
-    Pessoa pessoa[3];
-
-    for (int i = 0; i < 3; i++){
+    for (int i = 0; i < NUM_PESSOAS; i++){
         printf("nome: \n");
-        scanf(" %s", &pessoa[i].nome);
+        scanf(" %s", pessoa[i].nome);
         
-        printf("cpf: ");
+        printf("cpf: \n");
         scanf(" %ld", &pessoa[i].cpf);
 
-        // printf("idade: \n"); dd
-        //scanf(" %d", &pessoa[i].idade);
+        if ( !validarCPF(pessoa[i].cpf) ){ 
+            printf("cpf invalido, entre com o dado correto\n");
+            i--;
+            continue;
+        }
 
-        pessoa[i].idade = i * 10;
-
-        printf("cpf entrado: %ld\n\n", pessoa[i].cpf);
-    }
-
-    for (int i = 0; i < 3; i++){
-        printf("Pessoa: %s\n", pessoa[i].nome);
-
-        if (validaCPF(pessoa[i].cpf)) printf("cpf valido\n");
-        else printf("cpf invalido\n");
+        printf("idade: \n");
+        scanf(" %d", &pessoa[i].idade);
 
         printf("\n");
+    }
+
+
+    for (int i = 0; i < NUM_PESSOAS; i++){
+        printf(
+            "Pessoa: %s, cpf: %ld, idade: %d\n", 
+            pessoa[i].nome,
+            pessoa[i].cpf,
+            pessoa[i].idade
+        );
     }
 
     return 0;
