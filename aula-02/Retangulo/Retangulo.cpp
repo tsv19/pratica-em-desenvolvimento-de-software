@@ -1,8 +1,11 @@
 #include "Retangulo.hpp"
 
-unsigned float Retangulo::calcularArea(unsigned float lado, unsigned float base){
-    return lado * base / 2;
+ double Retangulo::calcularArea(double lado, double base){
+    return lado * base; 
 }
 
 
+ double Retangulo::calcularPerimetro(double lado, double base){
+    return lado * 2.0 + base * 2.0;
+}            
 

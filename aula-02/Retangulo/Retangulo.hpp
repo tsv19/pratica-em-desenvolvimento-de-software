@@ -3,10 +3,11 @@
 
     class Retangulo {
         public:
-            unsigned float calcularArea(unsigned float lado, unsigned float base);
-            
-            unsigned float lados;
-            unsigned float bases;
+            double calcularArea(double lado, double base);
+            double calcularPerimetro(double lado, double base);            
+
+            double lados;
+            double bases;
     };
 
 #endif
