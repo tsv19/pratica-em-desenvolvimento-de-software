@@ -11,7 +11,7 @@
 
             
             double getLados();
-                void setLados(double novoL);
+            void setLados(double novoL);
 
             double getBases();
             void setBases(double novoB);
