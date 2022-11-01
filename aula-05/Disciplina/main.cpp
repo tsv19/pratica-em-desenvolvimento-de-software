@@ -6,53 +6,20 @@
 #include "Disciplina.hpp"
 
 int main(){
-	Pessoa p1{"Joao", 11111111111, 20};
-	Pessoa p2{"Maria"};
+	Pessoa *p1{new Pessoa{"Joao", 11111111111, 20}};
+	Pessoa *p2{new Pessoa{"Maria"}};
+	Pessoa *p3{new Pessoa{"Joao", 22222222222, 12}};
+	Pessoa *p4{new Pessoa{"Tikara", 33333333333, 30}};
 
-    Disciplina *d1{new Disciplina{"Orientacao a Objetos", &p1}};
+    Disciplina *d1{new Disciplina{"Orientacao a Objetos", p1}};
 
-    p1.setNome("Jonas");
+    p1->setNome("Jonas");
 
-	// std::cout << p1.getNome() << '\t' << p1.getIdade() << '\t' <<  p1.getCpf() << '\n';
-	//std::cout << p2.getNome() << '\n';
-
-	// std::cout << d1.getNome() << '\n';
-
-    // std::cout << d1.getNome() << '\t' 
-            // << d1.getProfessor()->getNome() << '\n';
-
-    
-    //Pessoa *ptr1{new Pessoa};    
-    //Pessoa *ptr2{new Pessoa{"Joana", 11111111111, 22}};
-
-    //int * ptrInt{new int};
-    //int * ptrIntIniciado{new int{2}};
-
-    //ptr1->setNome("Maria");
-
-    //*ptrInt = 20;
-    
-    //std::cout << ptr1->getNome() << '\n';
-    //std::cout << ptr2->getNome() << '\n';
-    //std::cout << *ptrInt << '\n';
-    //std::cout << *ptrIntIniciado << '\n';
-
-    //int * array{new int[10]};
-
-    //for (int i = 0; i < 10; i++){
-    //    array[i] = i;
-    //    std::cout << array[i] << '\n';
-    //}
-
-    //delete ptr1;
-    //delete ptr2;
-    //delete ptrInt;
-    //delete[] array;
-    
     std::cout << "Disciplina: " << d1->getNome() << "\t Nome professor:" << d1->getNomeProfessor() << std::endl;
 
-
-    d1->adicionarAluno(&p2);
+    d1->adicionarAluno(p2);
+    d1->adicionarAluno(p3);
+    d1->adicionarAluno(p4);
 
     Pessoa **vetAlunos{d1->getVetorAlunos()};
 
@@ -60,5 +27,39 @@ int main(){
         std::cout << "Nome aluno: " << vetAlunos[i]->getNome() << std::endl;
     }
     
+    std::cout << std::endl;
+
+    if ( d1->removerAluno(p3) ){
+        std::cout << "Removeu" << std::endl;
+    }
+
+    std::cout << std::endl;
+
+    if ( d1->removerAluno(33333333333) ){
+        std::cout << "Removeu" << std::endl;
+    }
+    else {
+        std::cout << "Nao Removeu" << std::endl;
+    }
+
+
+    std::cout << std::endl;
+
+    if ( d1->removerAluno(p4) ){
+        std::cout << "Removeu" << std::endl;
+    }
+    else {
+        std::cout << "Nao Removeu" << std::endl;
+    }
+
+    std::cout << std::endl;
+
+    if ( d1->removerAluno(p2) ){
+        std::cout << "Removeu" << std::endl;
+    }
+    else {
+        std::cout << "Nao Removeu" << std::endl;
+    }
+
     return 0;
 }

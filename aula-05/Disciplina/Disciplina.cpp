@@ -54,7 +54,42 @@ int Disciplina::getQuantidadeAlunos(){
     return contAlunos;
 }
 
+bool Disciplina::removerAluno(Pessoa *aluno){
+    for (int i = 0; i < contAlunos; i++){
+        if ( alunos[i] == aluno ){
+            delete alunos[i];
 
+            for (int j = i; j < contAlunos - 1; j++){
+                alunos[j] = alunos[j+1];
+            }
+
+            alunos[contAlunos - 1] = nullptr;
+
+            contAlunos--;
+            return true;
+        }
+    }
+    return false;
+}
+
+
+bool Disciplina::removerAluno(unsigned long cpfAluno){
+    for (int i = 0; i < contAlunos; i++){
+            if ( alunos[i]->getCpf() == cpfAluno ){
+            delete alunos[i];
+
+            for (int j = i; j < contAlunos - 1; j++){
+                alunos[j] = alunos[j+1];
+            }
+
+            alunos[contAlunos - 1] = nullptr;
+
+            contAlunos--;
+            return true;
+        }
+    }
+    return false;
+}
 
 
 

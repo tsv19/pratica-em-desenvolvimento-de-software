@@ -23,6 +23,8 @@ class Disciplina{
         Pessoa **getVetorAlunos();
         int getQuantidadeAlunos();
 
+        bool removerAluno(Pessoa *aluno);
+        bool removerAluno(unsigned long cpfAluno);
 
 	private:
 		std::string nome;
