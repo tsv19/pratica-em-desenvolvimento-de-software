@@ -6,21 +6,21 @@
 class Curso{
     public:
         Curso();
-        Curso(std::string nomeCurso, unsigned long anoCriacao, unsigned long cargaHorariaMinima);
+        Curso(std::string nomeCurso, unsigned int anoCriacao, unsigned int cargaHorariaMinima);
 
         std::string getNomeCurso();
         void setNomeCurso(std::string nomeCurso);
 
-        unsigned long getAnoCriacao();
-        void setAnoCriacao(unsigned long anoCriacao);
+        unsigned int getAnoCriacao();
+        void setAnoCriacao(unsigned int anoCriacao);
 
-        unsigned long getCargaHorariaMinima();
-        void setCargaHorariaMinima(unsigned long cargaHorariaMinima);
+        unsigned int getCargaHorariaMinima();
+        void setCargaHorariaMinima(unsigned int cargaHorariaMinima);
 
     private:
         std::string nomeCurso;
-        unsigned long anoCriacao;
-        unsigned long cargaHorariaMinima;
+        unsigned int anoCriacao;
+        unsigned int cargaHorariaMinima;
 };
 
 #endif

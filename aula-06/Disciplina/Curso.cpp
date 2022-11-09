@@ -5,7 +5,7 @@ Curso::Curso()
     :nomeCurso{""}, anoCriacao{0}, cargaHorariaMinima{0} {
 }
 
-Curso::Curso(std::string nomeCurso, unsigned long anoCriacao, unsigned long cargaHorariaMinima)
+Curso::Curso(std::string nomeCurso, unsigned int anoCriacao, unsigned int cargaHorariaMinima)
     :nomeCurso{nomeCurso}, anoCriacao{anoCriacao}, cargaHorariaMinima{cargaHorariaMinima} {
 }
 
@@ -17,18 +17,18 @@ void Curso::setNomeCurso(std::string nomeCurso){
 }
 
 
-unsigned long Curso::getAnoCriacao(){
+unsigned int Curso::getAnoCriacao(){
     return this->anoCriacao;
 }
-void Curso::setAnoCriacao(unsigned long anoCriacao){
+void Curso::setAnoCriacao(unsigned int anoCriacao){
     this->anoCriacao = anoCriacao;
 }
 
 
-unsigned long Curso::getCargaHorariaMinima(){
+unsigned int Curso::getCargaHorariaMinima(){
     return this->cargaHorariaMinima;
 }
-void Curso::setCargaHorariaMinima(unsigned long cargaHorariaMinima){
+void Curso::setCargaHorariaMinima(unsigned int cargaHorariaMinima){
     this->cargaHorariaMinima = cargaHorariaMinima;
 }
 

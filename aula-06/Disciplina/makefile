@@ -4,7 +4,7 @@ nomePrograma=aula
 all: $(nomePrograma)
 
 $(nomePrograma): main.o Pessoa.o Disciplina.o Curso.o
-	g++ -o $(nomePrograma) main.o Pessoa.o Disciplina.o $(parametrosCompilacao)
+	g++ -o $(nomePrograma) main.o Pessoa.o Disciplina.o Curso.o $(parametrosCompilacao)
 
 main.o: main.cpp
 	g++ -c main.cpp $(parametrosCompilacao)

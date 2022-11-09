@@ -2,12 +2,12 @@
 
 #include <iostream>
 
-Disciplina::Disciplina(std::string nomeDisciplina)
-	:nome{nomeDisciplina} {
+Disciplina::Disciplina(std::string nomeDisciplina, Curso &curso)
+	:nome{nomeDisciplina}, curso{curso} {
 }
 
-Disciplina::Disciplina(std::string nomeDisciplina, Pessoa *novoProfessor)
-	:nome{nomeDisciplina}, professor{novoProfessor} {
+Disciplina::Disciplina(std::string nomeDisciplina, Pessoa *novoProfessor, Curso &curso)
+	:nome{nomeDisciplina}, professor{novoProfessor}, curso{curso} {
 }
 
 std::string Disciplina::getNome(){
@@ -75,9 +75,9 @@ bool Disciplina::removerAluno(Pessoa *aluno){
 }
 
 
-bool Disciplina::removerAluno(unsigned long cpfAluno){
+bool Disciplina::removerAluno(unsigned long cpf){
     for (int i = 0; i < this->contAlunos; i++){
-            if ( this->alunos[i]->getCpf() == cpfAluno ){
+            if ( this->alunos[i]->getCpf() == cpf ){
             delete this->alunos[i];
 
             for (int j = i; j < this->contAlunos - 1; j++){
@@ -94,20 +94,32 @@ bool Disciplina::removerAluno(unsigned long cpfAluno){
 }
 
 
-void Disciplina::imprimirDados(std::string &cabecalho, unsigned int &cargaHorariaCurso){
-
+void Disciplina::imprimirDados(std::string &cabecalho){
     std::cout << cabecalho << std::endl;
-
     std::cout << "Disciplina: " << this->nome << std::endl;
-
-    std::cout << "Porcentagem: " << this->cargaHoraria / (double)cargaHorariaCurso * 100 << "\% do curso" << std::endl;
-
+    std::cout << "Porcentagem: " << this->cargaHoraria / (double)this->curso.getCargaHorariaMinima() * 100 << "\% do curso" << std::endl;
     std::cout << "Professor: " << this->professor->getNome() << std::endl;
-
-
+    std::cout << "Curso: " << this->curso.getNomeCurso() << std::endl;
 }
 
 
+std::string Disciplina::getNomeCurso(){
+    return this->curso.getNomeCurso();
+}
+void Disciplina::setNomeCurso(std::string nomeCurso){
+    this->curso.setNomeCurso(nomeCurso);
+}
 
+unsigned int Disciplina::getAnoCriacaoCurso(){
+    return this->curso.getAnoCriacao();
+}
+void Disciplina::setAnoCriacaoCurso(unsigned int anoCriacao){
+    this->curso.setAnoCriacao(anoCriacao);
+}
 
-
+unsigned int Disciplina::getCargaHorariaMinimaCurso(){
+    return this->curso.getCargaHorariaMinima();
+}
+void Disciplina::setCargaHorariaMinimaCurso(unsigned int cargaHorariaMinima){
+    this->curso.setCargaHorariaMinima(cargaHorariaMinima);
+}
