@@ -2,6 +2,7 @@
 #define DISCIPLINA_H
 
 #include <string>
+#include <vector>
 #include "Pessoa.hpp"
 #include "Curso.hpp"
 
@@ -42,8 +43,7 @@ class Disciplina{
 		std::string nome;
 		unsigned int cargaHoraria;    
         Pessoa *professor;
-        Pessoa *alunos[50];
-        int contAlunos = 0;
+        std::vector<Pessoa *> alunos;
         Curso &curso;
 };
 #endif

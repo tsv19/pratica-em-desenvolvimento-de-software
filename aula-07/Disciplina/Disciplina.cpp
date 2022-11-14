@@ -1,6 +1,7 @@
 #include "Disciplina.hpp"
 
 #include <iostream>
+#include <vector> 
 
 Disciplina::Disciplina(std::string nomeDisciplina, Curso &curso)
 	:nome{nomeDisciplina}, curso{curso} {
@@ -40,9 +41,8 @@ std::string Disciplina::getNomeProfessor(){
 }
 
 bool Disciplina::adicionarAluno(Pessoa * aluno){
-    if ( this->contAlunos < 50 ){ 
-        this->alunos[contAlunos] = aluno;
-        this->contAlunos++;
+    if ( this->alunos.size() < 50 ){ 
+        this->alunos.push_back(aluno);
         return true;
     }
     return false;
@@ -53,21 +53,15 @@ Pessoa **Disciplina::getVetorAlunos(){
 }
 
 int Disciplina::getQuantidadeAlunos(){
-    return this->contAlunos;
+    return this->alunos.size();
 }
 
 bool Disciplina::removerAluno(Pessoa *aluno){
-    for (int i = 0; i < this->contAlunos; i++){
-        if ( this->alunos[i] == aluno ){
-            delete this->alunos[i];
+    std::vector<Pessoa *>::iterator it;
 
-            for (int j = i; j < this->contAlunos - 1; j++){
-                this->alunos[j] = this->alunos[j+1];
-            }
-
-            this->alunos[contAlunos - 1] = nullptr;
-
-            this->contAlunos--;
+    for (it = this->alunos.begin(); it != this->alunos.end(); it++){
+        if ( (*it) == aluno ){
+            this->alunos.erase(it);
             return true;
         }
     }
@@ -76,17 +70,11 @@ bool Disciplina::removerAluno(Pessoa *aluno){
 
 
 bool Disciplina::removerAluno(unsigned long cpf){
-    for (int i = 0; i < this->contAlunos; i++){
-            if ( this->alunos[i]->getCpf() == cpf ){
-            delete this->alunos[i];
+    std::vector<Pessoa *>::iterator it;
 
-            for (int j = i; j < this->contAlunos - 1; j++){
-                this->alunos[j] = this->alunos[j+1];
-            }
-
-            this->alunos[contAlunos - 1] = nullptr;
-
-            this->contAlunos--;
+    for (it = this->alunos.begin(); it != this->alunos.end(); it++){
+        if ( (*it)->getCpf() == cpf ){
+            this->alunos.erase(it);
             return true;
         }
     }
