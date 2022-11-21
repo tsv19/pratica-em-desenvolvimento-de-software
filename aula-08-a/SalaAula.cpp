@@ -22,3 +22,24 @@ void SalaAula::setCapcidade(unsigned int capacidade){
 }
 
 
+void SalaAula::adicionarDisciplina(Disciplina *disciplina){
+	if ( disciplina == nullptr ) return;
+
+	if ( disciplina->getSalaAula() != nullptr ){
+		disciplina->getSalaAula()->removerDisciplina(disciplina);
+	}
+
+	disciplina->setSalaAula(this);
+	this->disciplinasMinistradas.push_back(disciplina);
+}
+
+void SalaAula::removerDisciplina(Disciplina *disciplina){
+	if ( disciplina == nullptr ) return;
+
+	this->disciplinasMinistradas.remove(disciplina);
+}
+
+std::list<Disciplina *>& SalaAula::getDisciplinas(){
+	return this->disciplinasMinistradas;
+}
+

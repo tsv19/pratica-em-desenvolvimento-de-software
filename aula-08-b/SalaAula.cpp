@@ -1,5 +1,5 @@
 #include "SalaAula.hpp"
-#include "Disciplina.hpp"
+
 
 SalaAula::SalaAula(std::string nome, unsigned int capacidade)
 	:nome{nome}, capacidade{capacidade}{
@@ -21,7 +21,24 @@ void SalaAula::setCapcidade(unsigned int capacidade){
 	this->capacidade = capacidade;
 }
 
+
+void SalaAula::adicionarDisciplina(Disciplina *disciplina){
+	if ( disciplina == nullptr ) return;
+
+	if ( disciplina->getSalaAula() != nullptr ){
+		disciplina->getSalaAula()->removerDisciplina(disciplina);
+	}
+
+	disciplina->setSalaAula(this);
+}
+
+void SalaAula::removerDisciplina(Disciplina *disciplina){
+	if ( disciplina == nullptr ) return;
+
+	this->disciplinasMinistradas.remove(disciplina);
+}
+
 std::list<Disciplina *>& SalaAula::getDisciplinas(){
-    return this->disciplinasMinistradas;
+	return this->disciplinasMinistradas;
 }
 

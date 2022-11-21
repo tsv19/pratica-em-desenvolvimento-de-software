@@ -6,9 +6,8 @@
 #include "Pessoa.hpp"
 
 class SalaAula;
-
 class Disciplina{
-
+	friend class SalaAula;
 	public:
 		Disciplina(std::string nome);
 

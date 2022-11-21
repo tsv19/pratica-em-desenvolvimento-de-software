@@ -18,5 +18,16 @@ int main(){
 
 	SalaAula sala{"Lab Info 1", 20};
 
+	std::cout << "Testando por disciplina" << std::endl;
+
+	dis1.setSalaAula(&sala);
+	dis2.setSalaAula(&sala);
+
+	std::list<Disciplina*> &disciplinas = sala.getDisciplinas();
+
+	for ( std::list<Disciplina*>::iterator it = disciplinas.begin(); it != disciplinas.end(); ++it ){
+		std::cout << (*it)->getNome() << std::endl;
+	}
+
 	return 0;
 }

@@ -60,16 +60,5 @@ void Disciplina::setSalaAula(SalaAula *sala){
     this->sala = sala;
     if (this->sala != nullptr)
         this->sala->disciplinasMinistradas.push_back(this);
-
 }
-
-
-
-
-
-
-
-
-
-
 

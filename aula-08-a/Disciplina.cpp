@@ -52,7 +52,21 @@ SalaAula *Disciplina::getSalaAula(){
 }
 
 void Disciplina::setSalaAula(SalaAula *sala){
+    if ( this->sala != nullptr ){
+        if ( this->sala == sala ) return;
+
+        this->sala->removerDisciplina(this);
+
         this->sala = sala;
+
+        this->sala->adicionarDisciplina(this);
+
+        return;
+    }
+
+    this->sala = sala;
+    
+    this->sala->adicionarDisciplina(this);
 }
 
 
