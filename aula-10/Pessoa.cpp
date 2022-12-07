@@ -4,7 +4,7 @@
 
 Pessoa::Pessoa(){}
 
-iPessoa::~Pessoa(){}
+Pessoa::~Pessoa(){}
 
 Pessoa::Pessoa(std::string nome)
 	:nome{nome}{

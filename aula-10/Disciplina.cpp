@@ -14,7 +14,6 @@ Disciplina::~Disciplina(){
     std::list<ConteudoMinistrado *>::iterator it;
     for (it = conteudos.begin(); it != conteudos.end(); it++)
         delete *it;
-
 }
 
 Disciplina::Disciplina(std::string nome, SalaAula* sala)
