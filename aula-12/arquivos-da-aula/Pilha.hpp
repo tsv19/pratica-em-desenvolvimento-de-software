@@ -3,8 +3,7 @@
 
 #include <cstdlib>
 
-template <typename T = int, int MAX_PILHA = 10>
-
+template <typename T = int, std::size_t MAX_PILHA = 10>
 class Pilha{
 	public:
 		Pilha():topo{-1}{
@@ -37,10 +36,10 @@ class Pilha{
 		}
 
 		bool estaCheia() const{
-			if(topo >= MAX_PILHA -1)
-				return true;
-			return false;
-		}
+            if(topo > -1 && ((size_t)topo) >= MAX_PILHA -1)
+                return true;
+            return false;
+        }
 	private:
 		T pilha[MAX_PILHA];
 		int topo;

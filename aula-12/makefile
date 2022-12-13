@@ -3,8 +3,8 @@ nomeAula=aula
 
 all: $(nomeAula)
 
-$(nomeAula): main.o Pilha.hpp Pessoa.o
-	g++ -o $(nomeAula) main.o Pilha.hpp Pessoa.o $(parametrosCompilacao)
+$(nomeAula): main.o FilaCircular.hpp Pessoa.o
+	g++ -o $(nomeAula) main.o FilaCircular.hpp Pessoa.o $(parametrosCompilacao)
 
 main.o: main.cpp
 	g++ -c main.cpp $(parametrosCompilacao)
