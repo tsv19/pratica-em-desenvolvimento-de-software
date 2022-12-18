@@ -89,16 +89,16 @@ const std::list<ConteudoMinistrado*>& Disciplina::getConteudos() const{
     return this->conteudos;
 }
 
-void Disciplina::adicionarAluno(Pessoa* const aluno){
+void Disciplina::adicionarAluno(Aluno* const aluno){
 	this->alunos.push_back(aluno);
 }
 
-void Disciplina::removerAluno(Pessoa* const aluno){
+void Disciplina::removerAluno(Aluno* const aluno){
 	this->alunos.remove(aluno);
 }
 
 void Disciplina::removerAluno(const unsigned long cpf){
-	std::list<Pessoa*>::iterator it;
+	std::list<Aluno*>::iterator it;
 
 	for(it = this->alunos.begin(); it != this->alunos.end(); it++)
 		if((*it)->getCpf() == cpf)
@@ -107,6 +107,6 @@ void Disciplina::removerAluno(const unsigned long cpf){
 		this->alunos.erase(it);
 }
 
-const std::list<Pessoa*>& Disciplina::getAlunos() const{//retornamos uma referência para a lista, o que custa mais barato
+const std::list<Aluno*>& Disciplina::getAlunos() const{//retornamos uma referência para a lista, o que custa mais barato
 	return this->alunos;
 }

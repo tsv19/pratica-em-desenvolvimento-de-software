@@ -4,7 +4,7 @@
 #include <string>
 #include <list>
 
-#include "Pessoa.hpp"
+#include "Aluno.hpp"
 #include "Professor.hpp"
 #include "ConteudoMinistrado.hpp"
 
@@ -36,10 +36,10 @@ class Disciplina{
         void imprimirConteudosMinistrados() const;
 		const std::list<ConteudoMinistrado*>& getConteudos() const;
 
-		void adicionarAluno(Pessoa* const aluno);
-		void removerAluno(Pessoa* const aluno);
+		void adicionarAluno(Aluno* const aluno);
+		void removerAluno(Aluno* const aluno);
 		void removerAluno(const unsigned long cpf);
-		const std::list<Pessoa*>& getAlunos() const;
+		const std::list<Aluno*>& getAlunos() const;
 
 	private:
 		std::string nome;
@@ -48,6 +48,6 @@ class Disciplina{
 		SalaAula* sala;
 
 		std::list<ConteudoMinistrado*> conteudos;
-		std::list<Pessoa*> alunos;
+		std::list<Aluno*> alunos;
 };
 #endif

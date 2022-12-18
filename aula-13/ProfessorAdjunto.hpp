@@ -11,6 +11,7 @@ class ProfessorAdjunto : public Professor{
         void setLinhaPesquisa(const std::string& linhaPesquisa);
 
         unsigned int getSalario() const;
+    
     private:
         std::string linhaPesquisa;
 };
