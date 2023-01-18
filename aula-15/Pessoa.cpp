@@ -1,32 +1,32 @@
 #include "Pessoa.hpp"
+
 #include<iostream>
 
-Pessoa::Pessoa(){
-	std::cout << "Construtor de Pessoa" << std::endl;
-}
+/*Pessoa::Pessoa(){
+	std::cout << "Construtor default de pessoa" << std::endl;
+}*/
 
 Pessoa::Pessoa(std::string nome)
 		:nome{nome}{
-
-	std::cout << "Construtor de Pessoa nome" << std::endl;
+	std::cout << "Construtor de pessoa com nome " <<  std::endl;
 }
 
 Pessoa::Pessoa(std::string nome,  unsigned short int idade)
 		:nome{nome},idade{(unsigned char)idade}{
-	std::cout << "Construtor de Pessoa nome idade" << std::endl;
+	std::cout << "Construtor de pessoa com nome e idade " <<  std::endl;
 }
 
 Pessoa::Pessoa(std::string nome, unsigned long cpf, unsigned short int idade)
 		:Pessoa{nome, idade}{
-	std::cout << "Construtor de Pessoa nome cpf idade" << std::endl;
 	if(validarCPF(cpf))
 		this->cpf = cpf;
 	else
 		this->cpf = 0;
+	std::cout << "Construtor de pessoa com nome idade e cpf" <<  std::endl;
 }
 
 Pessoa::~Pessoa(){
-	std::cout << "Destrutor de Pessoa " << std::endl;
+	//std::cout << "Destrutor de Pessoa " << std::endl;
 }
 
 unsigned long Pessoa::getCpf(){

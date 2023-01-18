@@ -4,12 +4,12 @@
 
 Professor::Professor(const std::string& nome, const unsigned long cpf,
 	       	const unsigned int valorHora, const unsigned short cargaHoraria)
-		:Pessoa(nome, cpf), valorHora(valorHora), cargaHoraria(cargaHoraria) {
-	std::cout << "Construtor de Professor" << std::endl;
+		:Pessoa{nome, cpf}, valorHora{valorHora}, cargaHoraria{cargaHoraria} {
+			std::cout << "Construtor de Professor " << std::endl;
 }
 
 Professor::~Professor(){
-	std::cout << "Destrutor de Professor" << std::endl;
+//	std::cout << "Destrutor de Professor" << std::endl;
 }
 
 void Professor::setValorHora(const unsigned int valorHora){
