@@ -1,13 +1,18 @@
 #include "ProfessorEngenheiro.hpp"
 
-#include <iostream>
+#include<iostream>
 
+ProfessorEngenheiro::ProfessorEngenheiro(const std::string& nome,
+			const unsigned long cpf, const unsigned int valorHora,
+			const unsigned short cargaHoraria, const unsigned int numeroCrea)
+			:Pessoa{nome, cpf},
+       			Professor{nome, cpf, valorHora, cargaHoraria},
+			Engenheiro{nome, cpf, idade, numeroCrea}{
+	std::cout << "Construtor de Professor Engenheiro " << std::endl;
+}
 
-ProfessorEngenheiro::ProfessorEngenheiro(const std::string& nome, const unsigned long cpf, const unsigned int valorHora, const unsigned short cargaHoraria, const unsigned int numeroCrea)
-:Professor{nome, cpf, valorHora, cargaHoraria}, Engenheiro{numeroCrea}{
-    std::cout << "Construtor de ProfessorEngenheiro" << std::endl;
-} 
-        
-ProfessorEngenheiro::~ProfessorEngenheiro(){
-    std::cout << "Destrutor de ProfessorEngenheiro" << std::endl;
+ProfessorEngenheiro::~ProfessorEngenheiro(){}
+	
+unsigned int ProfessorEngenheiro::getSalario() const{
+	return Professor::getSalario() + Engenheiro::getSalario();
 }

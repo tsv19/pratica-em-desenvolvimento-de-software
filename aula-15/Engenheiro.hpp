@@ -5,17 +5,18 @@
 
 class Engenheiro : virtual public Pessoa{
 	public:
-		Engenheiro();
-		Engenheiro(const unsigned int numeroCrea);
+		//using Pessoa::Pessoa;
+
+		Engenheiro(const std::string& nome, const unsigned long cpf,
+				const unsigned short int idade, const unsigned int numeroCrea);
 		virtual ~Engenheiro();
 
 		unsigned int getNumeroCrea() const;
 		void setNumeroCrea(const unsigned int numeroCrea);
 
 		virtual unsigned int getSalario() const;
-
 	private:
-		constexpr static unsigned int salarioPadrao{9405};
+		const static unsigned int SALARIO_PADRAO;
 
 		unsigned int numeroCrea;
 	
