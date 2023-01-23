@@ -1,8 +1,8 @@
 #include "Disciplina.hpp"
-
 #include <iostream>
-
 #include "SalaAula.hpp"
+#include "CargaHorariaInvalidaException.hpp"
+
 
 Disciplina::Disciplina(const std::string& nome)
 	:nome{nome},sala{nullptr} {
@@ -34,7 +34,11 @@ int Disciplina::getCargaHoraria() const{
 	return this->cargaHoraria;
 }
 
-void Disciplina::setCargaHoraria(const unsigned int carga){
+void Disciplina::setCargaHoraria(const unsigned short carga){
+    if ( carga < 0 ){
+        throw CargaHorariaInvalidaException{carga};
+    }
+    
 	this->cargaHoraria = carga;
 }
 

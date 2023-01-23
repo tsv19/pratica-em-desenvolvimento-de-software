@@ -1,4 +1,7 @@
 #include "Professor.hpp"
+#include <stdexcept>
+#include "CargaHorariaInvalidaException.hpp"
+
 
 Professor::Professor(const std::string& nome, const unsigned long cpf,
                const unsigned int valorHora, const unsigned short cargaHoraria)
@@ -9,8 +12,11 @@ Professor::~Professor(){
 }
 
 void Professor::setValorHora(const unsigned int valorHora){
-    if(valorHora > 0)
-        this->valorHora = valorHora;
+    if (valorHora < 0){
+        throw std::out_of_range{"Valor Hora Invalido"};
+    }
+    
+    this->valorHora = valorHora;
 }
 
 unsigned int Professor::getValorHora() const{
@@ -18,8 +24,11 @@ unsigned int Professor::getValorHora() const{
 }
 
 void Professor::setCargaHoraria(const unsigned short cargaHoraria){
-    if(cargaHoraria > 0)
-        this->cargaHoraria = cargaHoraria;
+    if (cargaHoraria < 0){
+        throw CargaHorariaInvalidaException{cargaHoraria};
+    }
+
+    this->cargaHoraria = cargaHoraria;
 }
 
 unsigned short Professor::getCargaHoraria() const{

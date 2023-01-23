@@ -39,5 +39,8 @@ Console.o: Console.hpp Console.cpp
 CPFInvalidoException.o: CPFInvalidoException.hpp CPFInvalidoException.cpp
 	g++ -c CPFInvalidoException.cpp $(parametrosCompilacao)
 
+CargaHorariaInvalidaException.o: CargaHorariaInvalidaException.hpp CargaHorariaInvalidaException.cpp
+	g++ -c CargaHorariaInvalidaException.cpp $(parametrosCompilacao)
+
 clean:
 	rm -f *.o *.gch $(nomePrograma)

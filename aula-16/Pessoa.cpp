@@ -33,9 +33,7 @@ void Pessoa::setCpf(const unsigned long cpf){
     if(!validarCPF(cpf)){
         throw CPFInvalidoException{cpf};
     }
-	// this->cpf = 0;//indica que não é um cpf válido 
 	this->cpf = cpf;
-    return;
 }
 
 std::string Pessoa::getNome() const{
