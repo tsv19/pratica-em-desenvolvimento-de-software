@@ -121,4 +121,19 @@ std::istream& operator>>(std::istream& stream, CPF& cpf){
 
     return stream;
 }
+
+CPF::operator std::string() const {
+    std::string retorno {};
+    unsigned long val = this->numero;
+
+    // converter o numero para string
+    for (int i = 0; i < 11; i++) {
+        retorno = std::to_string(val % 10) + retorno;
+        val /= 10;
+    }
+
+    return retorno;
+}
+
+
 }  // namespace ufpr

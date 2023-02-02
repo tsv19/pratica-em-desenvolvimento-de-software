@@ -1,4 +1,4 @@
-parametrosCompilacao=-Wall #-Wshadow
+parametrosCompilacao=-Wall -std=c++17 #-Wshadow
 nomePrograma=aula
 
 all: $(nomePrograma)

@@ -10,9 +10,9 @@ namespace ufpr{
 class Ementa{
     public:
         Ementa();
-        Ementa(const std::string descricao);
-        Ementa(const Ementa& ementa);//construtor de cópia
-        Ementa(Ementa&& ementa);//move constructor
+        explicit Ementa(const std::string descricao);
+        explicit Ementa(const Ementa& ementa);//construtor de cópia
+        explicit Ementa(Ementa&& ementa);//move constructor
         virtual ~Ementa();
 
         void setDescricao(const std::string& descricao);

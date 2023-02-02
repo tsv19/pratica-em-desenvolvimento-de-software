@@ -10,7 +10,7 @@ class CPF{
 
     public:
         CPF() = default;
-        CPF(const unsigned long numero);
+        explicit CPF(const unsigned long numero);
         virtual ~CPF() = default;
         unsigned long getNumero() const;
         void setNumero(const unsigned long numero);
@@ -28,6 +28,8 @@ class CPF{
 
         unsigned short operator[](short int idx) const;
         unsigned long operator()(short int inicio, short int tam) const;
+
+        operator std::string() const;
     private:
         bool validarCPF(unsigned long cpfTeste) const;
         unsigned long numero;
